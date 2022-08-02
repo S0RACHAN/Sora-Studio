@@ -1,0 +1,694 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url(home.css);
+@import url(album.css);
+
+* {
+    -webkit-user-drag: none;
+    user-select: none;
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #000;
+}
+
+body {
+    height: 100vh;
+    background: rgb(246, 246, 246);
+}
+
+header {
+    height: 15vh;
+    width: 100%;
+    background: rgb(124, 193, 193);
+    line-height: 15vh;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: normal;
+    color: #fff;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+header h4 {
+    animation: show 1.2s ease-in;
+    color: #fff;
+}
+
+/* Albums和Songs标题 */
+.title {
+    font-size: 1.5rem;
+    padding: 2.6rem 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+/* 歌曲栏 */
+.songs {
+    width: 90%;
+    margin: auto;
+    padding-bottom: 10vh;
+    animation: showBody 1s ease-out;
+}
+
+/* 歌曲 */
+.song {
+    display: block;
+    background: #fff;
+    width: 100%;
+    height: 4rem;
+    margin: auto;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+    line-height: 4rem;
+    text-indent: 2.5rem;
+    border: 1px solid;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* 歌曲名字 */
+.song-name {
+    float: left;
+    font-weight: normal;
+    transition: 0.2s;
+}
+
+.song-name:hover {
+    color: rgb(160, 160, 160);
+}
+
+/* 歌曲的播放按钮 */
+.song .play {
+    cursor: pointer;
+    display: block;
+    float: left;
+    transform: translate(110%, 200%);
+    border: solid transparent;
+    border-width: 0.4rem 0.65rem 0.4rem 0.65rem;
+    border-left-color: #000;
+    transition: 0.2s;
+}
+
+.song .play:hover {
+    filter: invert(0.6);
+    transition: 0.1s;
+}
+
+/* 播放器整体 */
+.player {
+    position: fixed;
+    bottom: 0;
+    height: 7vh;
+    width: 100%;
+    /* transform-50% + left50%组合拳居中 */
+    transform: translate(-50%);
+    left: 50%;
+    bottom: -1px;
+    background: #fff;
+    border: 1px solid;
+    border-color: aliceblue;
+    opacity: 0.7;
+    display: none;
+    animation: playerUp 0.3s ease-in-out;
+}
+
+/* 播放器上一首按钮 */
+.player .backward {
+    position: absolute;
+    top: 0.6rem;
+    left: 46%;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: url('/frontend/icons/previous.svg') no-repeat;
+    background-position: center;
+    background-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* 播放器停止按钮 */
+.player .pausemusic {
+    position: absolute;
+    top: 0.6rem;
+    left: 50%;
+    transform: translate(-50%);
+    width: 1.2rem;
+    height: 1.2rem;
+    background: url('/frontend/icons/pause.svg') no-repeat;
+    background-size: 1.2rem;
+    background-position: center;
+    cursor: pointer;
+}
+
+/* 播放器播放按钮 */
+.player .playmusic {
+    position: absolute;
+    top: 0.6rem;
+    left: 50%;
+    transform: translate(-50%);
+    width: 1.2rem;
+    height: 1.2rem;
+    background: url('/frontend/icons/play.svg') no-repeat;
+    background-size: 1.2rem;
+    background-position: center;
+    cursor: pointer;
+    display: none;
+}
+
+/* 播放器下一首按钮 */
+.player .forward {
+    position: absolute;
+    top: 0.6rem;
+    left: calc(54% - 1.2rem);
+    width: 1.2rem;
+    height: 1.2rem;
+    background: url('/frontend/icons/next.svg') no-repeat;
+    background-position: center;
+    background-size: 1.2rem;
+    cursor: pointer;
+}
+
+.player-button:hover {
+    filter: invert(0.4);
+    transition: 0.3s;
+}
+
+/* 播放器上显示的歌名 */
+.song-name-display {
+    position: absolute;
+    top: 0.45rem;
+    left: 32%;
+    width: 12%;
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.song-name-display:hover {
+    color: rgb(88, 194, 194);
+    transition: 0.2s;
+}
+
+/* 进度条 */
+.progress-bar {
+    position: relative;
+    height: 0.15rem;
+    background: rgb(88, 194, 194);
+    cursor: pointer;
+    width: 70%;
+    left: 50%;
+    top: 2.5rem;
+    border-radius: 7px;
+    transform: translate(-50%);
+}
+
+/* 进度条上的圆圈 */
+.circle {
+    position: absolute;
+    margin-left: -0.32rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    bottom: 50%;
+    transform: translateY(50%);
+    background: #000;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.current-time,
+.total-time,
+.slash {
+    position: absolute;
+    top: 0.68rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    transition: 0.3 ease;
+}
+
+/* 当前时间 */
+.current-time {
+    left: 60%;
+    width: 3%;
+}
+
+.slash {
+    left: 62.55%;
+    width: 1%;
+}
+
+/* 歌曲时间 */
+.total-time {
+    left: calc(65.1% - 1.95rem);
+    width: 3%;
+}
+
+.speaker {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background: url('/frontend/icons/volume.svg') no-repeat;
+    background-position: center;
+    background-size: 1rem;
+    right: 1.7%;
+    top: 1rem;
+    cursor: pointer;
+}
+
+.volume-box {
+    position: absolute;
+    right: 1.7%;
+    top: -6.5rem;
+    width: 1rem;
+    height: 6rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 7px;
+    overflow: hidden;
+    opacity: 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.volume-bar {
+    position: absolute;
+    bottom: 0;
+    background: rgb(88, 194, 194);
+    width: 100%;
+    height: 60%;
+    transition: 0.4s ease;
+}
+
+.audio {
+    display: none;
+}
+
+.board {
+    position: fixed;
+    height: 36rem;
+    width: 25rem;
+    background: #fff;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+    border-radius: 20px;
+    box-shadow: 1px 1px 8px rgb(203, 203, 203);
+    display: none;
+    overflow: hidden;
+    animation: SmallToBig 0.2s ease-out, showHeader 0.3s;
+    opacity: 0.98;
+}
+
+.name-display {
+    padding: 7%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    margin: auto;
+    text-align: center;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.lyrics {
+    height: 70%;
+    overflow-y: scroll;
+}
+
+.lyrics p {
+    padding-bottom: 5%;
+    color: rgb(45, 45, 45);
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    line-height: 1.5rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.close {
+    transform: translateY(2.5em);
+    margin: auto;
+    background: url('/frontend/icons/cross.svg') no-repeat;
+    width: 1.4rem;
+    height: 1.4rem;
+    background-size: 1.4rem;
+    cursor: pointer;
+}
+
+.close:hover {
+    filter: invert(0.5);
+    transition: 0.2s;
+}
+
+@keyframes showBody {
+    0% {
+        padding-top: 45rem;
+    }
+
+    100% {
+        padding-top: 0rem;
+    }
+}
+
+@keyframes showBoard {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.98;
+    }
+}
+
+@keyframes SmallToBig {
+    0% {
+        width: 5rem;
+        height: 6rem;
+    }
+
+    100% {
+        height: 36rem;
+        width: 25rem;
+    }
+}
+
+@keyframes BigToSmall {
+    0% {
+        width: 25rem;
+        height: 36rem;
+    }
+
+    100% {
+        height: 6rem;
+        width: 5rem;
+    }
+}
+
+@keyframes playerUp {
+    0% {
+        height: 0;
+    }
+
+    100% {
+        height: 7vh;
+    }
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+@media(max-width: 1300px) {
+    header {
+        height: 13vh;
+        width: 100%;
+        background: rgb(124, 193, 193);
+        line-height: 13vh;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-weight: normal;
+        color: #fff;
+        font-size: 2.2em;
+        font-weight: 600;
+    }
+
+    .title {
+        font-size: 1.3rem;
+        padding: 1.4rem 0;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+    }
+
+    .songs {
+        width: 90%;
+        margin: auto;
+        padding-bottom: 8vh;
+        animation: showBody 1s ease-out;
+    }
+
+    .song {
+        display: block;
+        background: #fff;
+        width: 100%;
+        height: 2.8rem;
+        margin: auto;
+        margin-bottom: 1rem;
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.94rem;
+        line-height: 2.8rem;
+        text-indent: 2.8rem;
+        border: 1px solid;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .song-name {
+        float: left;
+        font-weight: normal;
+        transition: 0.2s;
+    }
+
+    .song .play {
+        cursor: pointer;
+        display: block;
+        float: left;
+        transform: translate(110%, 122%);
+        border: solid transparent;
+        border-width: 0.4rem 0.65rem 0.4rem 0.65rem;
+        border-left-color: #000;
+        transition: 0.2s;
+    }
+
+    .player {
+        position: fixed;
+        bottom: 0;
+        height: 7vh;
+        width: 100%;
+        transform: translate(-50%);
+        left: 50%;
+        bottom: -1px;
+        background: #fff;
+        border: 1px solid;
+        border-color: aliceblue;
+        opacity: 0.7;
+        display: none;
+        animation: playerUp 0.3s ease-in-out;
+    }
+
+    .song-name-display {
+        position: absolute;
+        top: 0.55rem;
+        left: 10%;
+        width: 25%;
+        font-size: 0.7rem;
+        text-decoration: underline;
+        cursor: pointer;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .player .backward {
+        position: absolute;
+        top: 0.6rem;
+        left: 38%;
+        width: 1.2rem;
+        height: 1.2rem;
+        background: url('/frontend/icons/previous.svg') no-repeat;
+        background-position: center;
+        background-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .player .pausemusic {
+        position: absolute;
+        top: 0.6rem;
+        left: 50%;
+        transform: translate(-50%);
+        width: 1.2rem;
+        height: 1.2rem;
+        background: url('/frontend/icons/pause.svg') no-repeat;
+        background-size: 1.2rem;
+        background-position: center;
+        cursor: pointer;
+    }
+
+    .player .playmusic {
+        position: absolute;
+        top: 0.6rem;
+        left: 50%;
+        transform: translate(-50%);
+        width: 1.2rem;
+        height: 1.2rem;
+        background: url('/frontend/icons/play.svg') no-repeat;
+        background-size: 1.2rem;
+        background-position: center;
+        cursor: pointer;
+        display: none;
+    }
+
+    .player .forward {
+        position: absolute;
+        top: 0.6rem;
+        left: calc(62% - 1.2rem);
+        width: 1.2rem;
+        height: 1.2rem;
+        background: url('/frontend/icons/next.svg') no-repeat;
+        background-position: center;
+        background-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .current-time,
+    .total-time,
+    .slash {
+        position: absolute;
+        top: 0.6rem;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-size: 11px;
+        transition: 0.3 ease;
+    }
+
+    .current-time {
+        left: 66%;
+        width: 3%;
+    }
+
+    .slash {
+        left: 76%;
+        width: 1%;
+    }
+
+    .total-time {
+        left: calc(86% - 1.5rem);
+        width: 3%;
+    }
+
+    .speaker {
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        background: url('/frontend/icons/volume.svg') no-repeat;
+        background-position: center;
+        background-size: 1rem;
+        right: 3%;
+        top: 0.7rem;
+        cursor: pointer;
+    }
+
+    .volume-box {
+        position: absolute;
+        right: 3%;
+        top: -6.5rem;
+        width: 1rem;
+        height: 6rem;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 7px;
+        overflow: hidden;
+        opacity: 0;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .volume-bar {
+        position: absolute;
+        bottom: 0;
+        background: rgb(88, 194, 194);
+        width: 100%;
+        height: 60%;
+        transition: 0.4s ease;
+    }
+
+    .progress-bar {
+        position: relative;
+        height: 0.15rem;
+        background: rgb(88, 194, 194);
+        cursor: pointer;
+        width: 70%;
+        left: 50%;
+        top: 2.2rem;
+        border-radius: 7px;
+        transform: translate(-50%);
+    }
+
+    .circle {
+        position: absolute;
+        margin-left: -0.32rem;
+        width: 0.6rem;
+        height: 0.6rem;
+        bottom: 50%;
+        transform: translateY(50%);
+        background: #000;
+        border-radius: 100%;
+        cursor: pointer;
+    }
+
+    .board {
+        position: fixed;
+        height: 30rem;
+        width: 20rem;
+        background: #fff;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        top: 50%;
+        border-radius: 20px;
+        box-shadow: 1px 1px 8px rgb(203, 203, 203);
+        display: none;
+        overflow: hidden;
+        animation: SmallToBig 0.2s ease-out, showHeader 0.3s;
+        opacity: 0.98;
+        z-index: 1;
+    }
+
+    .name-display {
+        padding: 7%;
+        font-family: 'Poppins', sans-serif;
+        font-size: 20px;
+        margin: auto;
+        text-align: center;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .lyrics {
+        height: 70%;
+        overflow-y: scroll;
+    }
+
+    .lyrics p {
+        padding-bottom: 5%;
+        color: rgb(45, 45, 45);
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        line-height: 1.5rem;
+        text-align: center;
+        letter-spacing: 0.3px;
+    }
+
+    .close {
+        transform: translateY(1.5rem);
+        margin: auto;
+        background: url('/frontend/icons/cross.svg') no-repeat;
+        width: 1.4rem;
+        height: 1.4rem;
+        background-size: 1.4rem;
+        cursor: pointer;
+    }
+
+    .close:hover {
+        filter: invert(0.5);
+        transition: 0.2s;
+    }
+}

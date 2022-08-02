@@ -1,0 +1,108 @@
+.main {
+    width: 100%;
+}
+
+/* 专辑资讯栏 */
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 25rem;
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+    animation: show 1.5s;
+}
+
+/* 专辑框 */
+.album-box {
+    height: 15rem;
+    width: 15rem;
+    border-radius: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 10px 8px 20px rgb(160, 160, 160);
+}
+
+/* 专辑图片 */
+.album-box .pic {
+    height: 15rem;
+    width: 15rem;
+    background-position: center;
+}
+
+/* 专辑标题 */
+.album-content .album-name {
+    font-size: 1.5rem;
+    height: 2.5rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* 发行日期 */
+.album-content .release-date {
+    width: 100%;
+    height: 0.5rem;
+    text-align: center;
+    color: rgb(160, 160, 160);
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+@media(max-width:1300px) {
+
+    /* 专辑资讯栏 */
+    .info {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 18rem;
+        width: 90%;
+        margin: auto;
+        overflow: hidden;
+        animation: show 1.5s;
+    }
+
+    /* 专辑框 */
+    .album-box {
+        height: 10rem;
+        width: 10rem;
+        border-radius: 20px;
+        cursor: pointer;
+        overflow: hidden;
+        box-shadow: 10px 8px 20px rgb(160, 160, 160);
+    }
+
+    /* 专辑图片 */
+    .album-box .pic {
+        height: 10rem;
+        width: 10rem;
+        background-position: center;
+    }
+
+    /* 专辑标题 */
+    .album-content .album-name {
+        font-size: 1.2rem;
+        height: 2.5rem;
+        font-weight: 500;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+        letter-spacing: 0.5px;
+    }
+
+    /* 发行日期 */
+    .album-content .release-date {
+        width: 100%;
+        height: 0.5rem;
+        text-align: center;
+        color: rgb(160, 160, 160);
+        font-size: 0.8rem;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+        letter-spacing: 1px;
+    }
+}

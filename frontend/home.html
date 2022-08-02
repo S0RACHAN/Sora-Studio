@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/home.css">
+    <title>Sora Studio</title>
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <a href="home.html">
+            <h4>SORA STUDIO</h4>
+        </a>
+    </header>
+    <main>
+        <!-- 专辑 -->
+        <div class="albums">
+            <div class="title">Albums</div>
+            <ul class="album-list">
+                <li class="first-album album">
+                    <a href="one.html"><span class="play-button"></span></a>
+                </li>
+                <li class="album">
+                    <h4>EMPTY</h4>
+                    <a href=""><span class="play-button"></span></a>
+                </li>
+                <li class="album">
+                    <h4>EMPTY</h4>
+                    <a href=""><span class="play-button"></span></a>
+                </li>
+                <li class="album">
+                    <h4>EMPTY</h4>
+                    <a href=""><span class="play-button"></span></a>
+                </li>
+                <li class="album">
+                    <h4>EMPTY</h4>
+                    <a href=""><span class="play-button"></span></a>
+                </li>
+            </ul>
+        </div>
+        <!-- 歌曲 -->
+        <div class="songs">
+            <div class="board">
+                <div class="name-display">
+                    <h4></h4>
+                </div>
+                <div class="lyrics">
+                    <p></p>
+                </div>
+                <div class="close"></div>
+            </div>
+            <div class="title">Songs</div>
+            <ul class="song-list">
+                <li class="song">
+                    <span class="play"></span>
+                    <div class="song-name" id="Hel">Hel</div>
+                </li>
+                <li class="song">
+                    <span class="play"></span>
+                    <div class="song-name" id="NONAME">NONAME</div>
+                </li>
+                <li class="song">
+                    <span class="play"></span>
+                    <div class="song-name" id="NONAME_2">NONMAE_2</div>
+                </li>
+                <li class="song">
+                    <span class="play"></span>
+                    <div class="song-name" id="ware">ware</div>
+                </li>
+                <li class="song">
+                    <span class="play"></span>
+                    <div class="song-name" id="SummerDream">Summer Dream</div>
+                </li>
+                <li class="song">
+                    <span class="play"></span>
+                    <div class="song-name" id="iyvrlu">iyvrlu</div>
+                </li>
+                <li class="song">
+                    <span class="play"></span>
+                    <div class="song-name" id="ni">匿</div>
+                </li>
+                <li class="song">
+                    <span class="play"></span>
+                    <div class="song-name" id="001.100">001.100</div>
+                </li>
+            </ul>
+        </div>
+    </main>
+    <!-- 播放器 -->
+    <section class="player">
+        <div class="song-name-display"></div>
+        <div class="button">
+            <div class="backward player-button"></div>
+            <div class="pausemusic player-button"></div>
+            <div class="playmusic player-button"></div>
+            <div class="forward player-button"></div>
+        </div>
+        <div class="time">
+            <div class="current-time">00:00</div>
+            <div class="slash">/</div>
+            <div class="total-time">03:00</div>
+        </div>
+        <div class="progress-bar">
+            <div class="circle player-button"></div>
+        </div>
+        <div class="speaker player-button"></div>
+        <div class="volume-box">
+            <div class="volume-bar"></div>
+        </div>
+
+    </section>
+    <!-- 音频 -->
+    <section>
+        <audio class="audio" src="/frontend/audio/Hel.wav" controls="controls"></audio>
+        <audio class="audio" src="/frontend/audio/NONAME.wav" controls="controls"></audio>
+        <audio class="audio" src="/frontend/audio/NONAME_2.wav" controls="controls"></audio>
+        <audio class="audio" src="/frontend/audio/ware.wav" controls="controls"></audio>
+        <audio class="audio" src="/frontend/audio/Summer Dream.wav" controls="controls"></audio>
+        <audio class="audio" src="/frontend/audio/iyvrlu.wav" controls="controls"></audio>
+        <audio class="audio" src="/frontend/audio/匿.wav" controls="controls"></audio>
+        <audio class="audio" src="/frontend/audio/001.100.wav" controls="controls"></audio>
+    </section>
+    <!-- js -->
+    <script src="common.js"></script>
+    <script src="home.js"></script>
+    <script src="content.js"></script>
+</body>
+
+</html>

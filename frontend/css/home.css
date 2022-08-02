@@ -1,0 +1,141 @@
+main {
+    width: 100%;
+}
+
+/* 专辑栏 */
+.albums {
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+    animation: showBody 1s ease-out;
+}
+
+/* 专辑列表 */
+.album-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 16rem;
+}
+
+/* 专辑 */
+.album {
+    position: relative;
+    float: left;
+    display: block;
+    margin-right: 4rem;
+    height: 12rem;
+    width: 12rem;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    box-shadow: 10px 8px 12px rgb(160, 160, 160);
+    overflow: hidden;
+}
+
+.album:last-child {
+    margin-right: 0;
+}
+
+.album:hover {
+    transform: translateY(-1.5%);
+    transition: 0.4s;
+}
+
+/* 一号专辑位 */
+.first-album {
+    background-image: url(../img/one.jpg);
+    background-position: center;
+}
+
+/* 空专辑位上的EMPTY字样 */
+.album h4 {
+    position: absolute;
+    font-size: 23px;
+    text-align: center;
+    display: block;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 鼠标拖动到专辑时出现的播放按钮 */
+.play-button {
+    display: none;
+    position: absolute;
+    /* 居中 */
+    top: 33%;
+    left: 40%;
+    border: solid transparent;
+    border-width: 2rem 3rem 2rem 3rem;
+    border-left-color: #fff;
+}
+
+.album:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+@media(max-width: 1300px) {
+    .albums {
+        width: 90%;
+        margin: auto;
+        animation: showBody 1s ease-out;
+    }
+
+    .album-list {
+        position: relative;
+        width: 100%;
+        height: 11rem;
+        overflow-x: scroll;
+    }
+
+    .album {
+        position: absolute;
+        display: block;
+        height: 8rem;
+        width: 8rem;
+        background: rgb(255, 255, 255);
+        border-radius: 20px;
+        box-shadow: 10px 8px 12px rgb(160, 160, 160);
+        overflow: hidden;
+    }
+
+    .first-album {
+        background-image: url(../img/one.jpg);
+        background-position: center;
+        background-size: 8rem;
+    }
+
+    .album h4 {
+        position: absolute;
+        font-size: 17px;
+        text-align: center;
+        display: block;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .album:nth-child(1) {
+        left: 0;
+    }
+
+    .album:nth-child(2) {
+        left: 10rem;
+    }
+
+    .album:nth-child(3) {
+        left: 20rem;
+    }
+
+    .album:nth-child(4) {
+        left: 30rem;
+    }
+
+    .album:nth-child(5) {
+        left: 40rem;
+    }
+}
